@@ -1,0 +1,6 @@
+.prodItem {
+    cursor: pointer;
+    & :hover{
+        background-color: lightblue;
+    }
+}
