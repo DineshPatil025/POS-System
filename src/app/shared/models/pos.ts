@@ -7,5 +7,6 @@ export interface Ipos {
     quant?:number;
     id:string;
     total?:number;
+    
 
 }

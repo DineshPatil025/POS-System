@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { PosService } from '../../services/pos.service';
 import { Ipos } from '../../models/pos';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-pos-table',
@@ -10,13 +11,14 @@ import { Ipos } from '../../models/pos';
 export class PosTableComponent implements OnInit {
   private _posService = inject(PosService)
 
+
   objArray: Array<Ipos> = []
-  quantity: number = 1;
-  total: number = 0;
+
 
   constructor() { }
 
   ngOnInit(): void {
+
     this.getProdItem()
 
   }
@@ -24,12 +26,19 @@ export class PosTableComponent implements OnInit {
   getProdItem() {
     this._posService.prodObjAsObs$.subscribe(data => {
       if (!this.objArray.some(ele => ele.id === data.id)) {
-        this.objArray.push({ ...data, quant: 1 });
+        this.objArray.push({ ...data, quant: 1, total: data.price });
+        this._posService.getObjArra(this.objArray)
+        // console.log(this.objArray);
+
       } else {
         let getIndex = this.objArray.findIndex(ele => ele.id === data.id)
-        this.objArray[getIndex].quant!++
+        this.objArray[getIndex].quant!++;
+        this.objArray[getIndex].total = this.objArray[getIndex].quant! * +this.objArray[getIndex].price
+        this._posService.getObjArra(this.objArray)
+
       }
     })
   }
+
 
 }

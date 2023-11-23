@@ -1,5 +1,6 @@
 <div class="table-responsive">
     <table class="table table-bordered">
+
         <thead>
             <tr class="text-uppercase">
                 <th>products</th>
@@ -8,16 +9,18 @@
                 <th>total</th>
             </tr>
         </thead>
-        <!-- <div *ngIf="objArray.length >0; else noData " > -->
+        <ng-container *ngIf="objArray.length >0; else noData ">
             <tbody>
+
                 <tr *ngFor="let obj of objArray">
                     <td>{{obj.name}}</td>
-                    <td>{{obj.price}}</td>
+                    <td>{{obj.price | currency:"INR"}}</td>
                     <td>{{obj.quant}}</td>
-                    <td>{{obj.quant! * + obj.price}} </td>
+                    <td>{{obj.total| currency:"INR"}} </td>
                 </tr>
             </tbody>
-        <!-- </div> -->
+        </ng-container>
+
     </table>
 </div>
 

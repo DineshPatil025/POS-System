@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PosTableComponent } from './shared/components/pos-table/pos-table.component';
 import { PostBillComponent } from './shared/components/post-bill/post-bill.component';
 import { PostProdListComponent } from './shared/components/post-prod-list/post-prod-list.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 
 @NgModule({
@@ -23,7 +23,8 @@ import { MaterialModule } from './material/material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,20 +1,3 @@
-<!-- <div class="card">
-    <div class="card-body">
-        <div class="row mb-2">
-            <div class="col-md-4">
-                <label>Subtotal</label>
-            </div>
-            <div class="col-md-8">
-                <input type="text" class="form-control">
-            </div>
-        </div>
-        <div class=" row actions d-flex justify-content-between ">
-            <button mat-raised-button color="accent" class="text-uppercase w-50">cancel sale</button>
-            <button mat-raised-button color="primary" class="text-uppercase w-50">process sale</button>
-        </div>
-    </div>
-</div> -->
-
 <table class="table table-bordered">
     <tbody>
         <tr>
@@ -23,12 +6,13 @@
             </td>
             <td>
                 <div class="row">
-                    <div class="col-md-6">
-                        <input #total type="text" class="form-control " disabled>
+
+                    <div class="col-md-12 d-flex justify-content-between">
+                        <h3  class="subtotal">No Of Items {{noOfItem}}</h3>
+                        <h3 class="subtotal">{{subtotal | currency:"INR"}}</h3>
                     </div>
-                    <div class="col-md-6">
-                        <input #noofItems type="text" class="form-control " disabled>
-                    </div>
+
+
                 </div>
             </td>
         </tr>

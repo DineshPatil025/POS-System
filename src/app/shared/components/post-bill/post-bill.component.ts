@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Ipos } from '../../models/pos';
+import { PosService } from '../../services/pos.service';
 
 @Component({
   selector: 'app-post-bill',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostBillComponent implements OnInit {
 
+  subtotal!: number;
+  noOfItem!: number ;
+
+  objArr!: Array<Ipos>;
+  private _posService = inject(PosService)
+
+  
   constructor() { }
 
   ngOnInit(): void {
-  }
 
+    this._posService.billSubjectAObs$.subscribe(res => {
+      this.objArr = res;
+      console.log("this is from pos-bill",this.objArr);
+     let subtotal = 0;
+     let noOfQuant = 0;
+      res.forEach(element => {
+        subtotal = +subtotal + +element.total!;
+        noOfQuant = noOfQuant +element.quant!;
+
+        this.subtotal = subtotal
+        this.noOfItem = noOfQuant
+      });
+      
+    })
+   
+    
+   
+  }
 }
