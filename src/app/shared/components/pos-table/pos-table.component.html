@@ -14,9 +14,9 @@
 
                 <tr *ngFor="let obj of objArray">
                     <td>{{obj.name}}</td>
-                    <td>{{obj.price | currency:"INR"}}</td>
+                    <td class="text-right">{{obj.price | currency:"INR"}}</td>
                     <td>{{obj.quant}}</td>
-                    <td>{{obj.total| currency:"INR"}} </td>
+                    <td class="text-right">{{obj.total| currency:"INR"}} </td>
                 </tr>
             </tbody>
         </ng-container>

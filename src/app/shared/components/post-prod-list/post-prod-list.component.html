@@ -1,9 +1,12 @@
 <div class="row">
-    <div class="col-md-4" *ngFor="let prod of prodArray" (click) = "onProdClick(prod)">
+    <div class="col-md-12  ">
+        <h3 class="text-center text-capitalize mb-1 text-dark bg-warning">click on below proeducts to add to bill</h3>
+    </div>
+    <div class="col-md-4" *ngFor="let prod of prodArray" (click)="onProdClick(prod)">
         <div class="card">
-            <div class="card-body prodItem">
-                {{prod.name}}
 
+            <div class="card-body bg-dark text-white text-center text-uppercase prodItem">
+                {{prod.name}}
             </div>
         </div>
     </div>

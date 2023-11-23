@@ -70,5 +70,7 @@ export class PosService {
 
   }
 
-  
+  clearBill(){
+    
+  }
 }

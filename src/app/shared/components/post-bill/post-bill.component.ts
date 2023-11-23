@@ -38,4 +38,11 @@ export class PostBillComponent implements OnInit {
     
    
   }
+
+  onBillCancel(){
+    console.log("cancel bill clicked");
+    this.objArr = [];
+    this._posService.clearBill()
+    
+  }
 }
