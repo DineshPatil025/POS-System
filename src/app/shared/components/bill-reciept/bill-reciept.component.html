@@ -1,7 +1,9 @@
 <div class="reciept-details">
-    <h3 class="text-center text-capitalise bg-dark text-white">Reciept</h3>
-    <h2>Sale No : {{recieptNo}}</h2>
-    <p>Bill Date: {{billDate | date}}</p>
+    <h3 class="text-center text-capitalise bg-dark text-white p-3">Reciept</h3>
+    <div class="d-flex justify-content-between">
+        <p>Reciept No : <strong>{{recieptNo}}</strong></p>
+        <p>Reciept Date: <strong>{{billDate | date}}</strong></p>
+    </div>
 </div>
 
 <div class="table-responsive">
@@ -27,29 +29,27 @@
     </table>
     <table class="table table-bordered">
         <thead>
-            <div class="d-flex">
+            <h4>Totall Quantity : <strong>{{totQuant}}</strong></h4>
+            <!-- <tr> -->
+            <!-- <th >Total Quantity</th>
+                    <td >{{totQuant}}</td> -->
+            <!-- </tr> -->
+            <tr>
+                <th>Sub Total Amount</th>
+                <td class="text-right">{{subTotAmt | currency:"INR"}}</td>
+            </tr>
 
-                <tr>
-                    <th>Total Quantity</th>
-                    <td>{{totQuant}}</td>
-                </tr>
-                <tr>
-                    <th>Sub Total Amount</th>
-                    <td>{{subTotAmt | currency:"INR"}}</td>
-                </tr>
-
-            </div>
             <tr>
                 <th>Vat TAx Amt</th>
-                <td>{{vatAmt | currency:"INR"}}</td>
+                <td class="text-right">{{vatAmt | currency:"INR"}}</td>
             </tr>
             <tr>
                 <th>Disc Amt</th>
-                <td>{{discAmt | currency:"INR"}}</td>
+                <td class="text-right">{{discAmt | currency:"INR"}}</td>
             </tr>
             <tr>
                 <th>Total To be paid</th>
-                <td>{{totAmt | currency:"INR"}}</td>
+                <td class="text-right"><strong>{{totAmt | currency:"INR"}}</strong></td>
             </tr>
 
 
