@@ -57,8 +57,6 @@ export class PosTableComponent implements OnInit {
     this.objArray = this.objArray.filter(ele => ele.id !== id)
     console.log(this.objArray);
     this._posService.getBillObjArra(this.objArray)
-    
-
   }
 
 

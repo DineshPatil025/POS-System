@@ -23,8 +23,8 @@
                 <div class="row">
 
                     <div class="col-md-12 d-flex justify-content-between">
-                        <input #vatTxaxPerc type="number" [min]="0" name="vatTax" id="vatTax" placeholder="Vat Tax" 
-                            (change)="getVatPerc()" (keyup)="getVatPerc()" [disabled]="!subTotal" [(ngModel)] ="vatPerc">
+                        <input #vatTxaxPerc type="number" [min]="0" name="vatTax" id="vatTax" placeholder="Vat Tax"
+                            (change)="getVatPerc()" (keyup)="getVatPerc()" [disabled]="!subTotal" [(ngModel)]="vatPerc">
                         <h3 class="subtotal">{{vatTaxAmt | currency:"INR"}}</h3>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
 
                     <div class="col-md-12 d-flex justify-content-between">
                         <input #discount type="number" [min]="0" name="discount" id="discount"
-                            placeholder="Enter discount percent" [(ngModel)] ="discPerc" (change)="getDiscPerc()"
+                            placeholder="Enter discount percent" [(ngModel)]="discPerc" (change)="getDiscPerc()"
                             (keyup)="getDiscPerc()" [disabled]="!subTotal">
                         <h3 class="subtotal">{{discAmt | currency:"INR"}}</h3>
                     </div>
@@ -62,9 +62,6 @@
 
             </td>
         </tr>
-
-   
-        
     </tbody>
 </table>
 
@@ -72,5 +69,5 @@
     <button mat-raised-button color="accent" class="text-uppercase bill-button" (click)="onBillCancel()">cancel bill
     </button>
 
-    <button mat-raised-button color="primary" class="text-uppercase bill-button">process bill</button>
+    <button mat-raised-button color="primary" class="text-uppercase bill-button" (click)="onProcessBill()" [disabled]="!subTotal">process bill</button>
 </div>

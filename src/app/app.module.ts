@@ -9,6 +9,7 @@ import { PostBillComponent } from './shared/components/post-bill/post-bill.compo
 import { PostProdListComponent } from './shared/components/post-prod-list/post-prod-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
+import { BillRecieptComponent } from './shared/components/bill-reciept/bill-reciept.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MaterialModule } from './material/material.module';
     PosTableComponent,
     PostBillComponent,
     PostProdListComponent,
+    BillRecieptComponent,
    
   ],
   imports: [

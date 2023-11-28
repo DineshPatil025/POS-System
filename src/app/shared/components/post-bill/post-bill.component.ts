@@ -1,8 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { Ipos } from '../../models/pos';
 import { PosService } from '../../services/pos.service';
-import { PercentPipe } from '@angular/common';
-import { NumberValueAccessor } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { BillRecieptComponent } from '../bill-reciept/bill-reciept.component';
+
 
 @Component({
   selector: 'app-post-bill',
@@ -30,7 +31,7 @@ export class PostBillComponent implements OnInit {
   private _posService = inject(PosService)
 
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.onSubTotal()
@@ -103,7 +104,6 @@ export class PostBillComponent implements OnInit {
   getDiscPerc() {
     // this.discPerc = +(eve.target as HTMLInputElement).value;
     this.discAmt = this.subTotal * (+this.discPerc / 100)
-    console.log(this.discAmt);
     this.totalBillAmt()
 
   }
@@ -111,6 +111,7 @@ export class PostBillComponent implements OnInit {
     this.totalBill = this.subTotal + this.vatTaxAmt - this.discAmt;
   }
 
-
-
+  onProcessBill() {
+    this.dialog.open(BillRecieptComponent, {width:"500px", height:"70vh", data: { arr: this.objArr, subtototat: this.subTotal, vatAmt: this.vatTaxAmt, discAmt: this.discAmt, subTotalAmt:this.subTotal, totAmt: this.totalBill,totQuant: this.noOfItem } })
+  }
 }
