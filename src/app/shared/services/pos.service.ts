@@ -10,7 +10,7 @@ export class PosService {
   private prodObj$ :Subject<any> = new Subject()
   prodObjAsObs$ = this.prodObj$.asObservable();
 
-  private billSubject$:Subject<Array<Ipos>> = new Subject()
+  private billSubject$:Subject<Array<Ipos>> = new Subject();
   billSubjectAObs$ = this.billSubject$.asObservable();
 
   prodArray: Array<Ipos> = [
@@ -61,16 +61,21 @@ export class PosService {
   getProdObj(prodObj:Ipos){
     this.prodObj$.next(prodObj)
   }
+
+
   getAllitem() {
     return this.prodArray
   }
-  getObjArra(objArr:Array<Ipos>){
-    console.log(objArr);
+
+
+  getBillObjArra(objArr:Array<Ipos>){
+   
     this.billSubject$.next(objArr);
 
   }
 
   clearBill(){
+
     
   }
 }

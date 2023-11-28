@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { Ipos } from '../../models/pos';
 import { PosService } from '../../services/pos.service';
+import { PercentPipe } from '@angular/common';
+import { NumberValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-post-bill',
@@ -9,40 +11,106 @@ import { PosService } from '../../services/pos.service';
 })
 export class PostBillComponent implements OnInit {
 
-  subtotal!: number;
-  noOfItem!: number ;
+  isVatDisabled: boolean = false;
+
+  subTotal: number = 0;
+  noOfItem: number = 0;
+  vatTaxAmt: number = 0;
+  vatPerc: number = 0;
+  testAmt: number = 0;
+  testNgModel: number = 0;
+
+  discPerc: Number = 0;
+  discAmt: number = 0;
+  totalBill: number = 0;
+  @ViewChild("vatTxaxPerc") vatTxaxPerc !: ElementRef;
+  @ViewChild("discount") discount !: ElementRef;
 
   objArr!: Array<Ipos>;
   private _posService = inject(PosService)
 
-  
+
   constructor() { }
 
   ngOnInit(): void {
+    this.onSubTotal()
+
+  }
+
+  onSubTotal() {
 
     this._posService.billSubjectAObs$.subscribe(res => {
+
       this.objArr = res;
-      console.log("this is from pos-bill",this.objArr);
-     let subtotal = 0;
-     let noOfQuant = 0;
-      res.forEach(element => {
-        subtotal = +subtotal + +element.total!;
-        noOfQuant = noOfQuant +element.quant!;
 
-        this.subtotal = subtotal
-        this.noOfItem = noOfQuant
-      });
-      
+      let subtotal = 0;
+      let noOfQuant = 0;
+
+      this.objArr = res
+
+      if (this.objArr.length > 0) {
+        this.objArr.forEach(element => {
+          subtotal = +subtotal + +element.total!;
+          noOfQuant = noOfQuant + element.quant!;
+
+
+          this.subTotal = subtotal
+          this.noOfItem = noOfQuant
+
+          this.totalBillAmt()
+          this.getVatPerc();
+
+          this.getDiscPerc();
+
+        });
+      } else {
+        this.subTotal = 0;
+        this.noOfItem = 0;
+        this.vatTaxAmt = 0;
+        this.discAmt = 0;
+        this.totalBill = 0;
+        this.discPerc = 0;
+        this.vatPerc = 0;
+
+
+      }
+
     })
-   
-    
-   
   }
 
-  onBillCancel(){
-    console.log("cancel bill clicked");
-    this.objArr = [];
-    this._posService.clearBill()
-    
+  onBillCancel() {
+
+    let confDelete = confirm("Do You Want to delete ?")
+    if (confDelete) {
+      this.objArr = [];
+      this._posService.getBillObjArra(this.objArr);
+      this.onSubTotal();
+      this.vatTxaxPerc.nativeElement.value = "";
+      this.discount.nativeElement.value = "";
+    }
+
   }
+
+
+  getVatPerc() {
+    this.vatTaxAmt = this.subTotal * (this.vatPerc / 100);
+    this.totalBillAmt()
+  }
+
+
+
+
+  getDiscPerc() {
+    // this.discPerc = +(eve.target as HTMLInputElement).value;
+    this.discAmt = this.subTotal * (+this.discPerc / 100)
+    console.log(this.discAmt);
+    this.totalBillAmt()
+
+  }
+  totalBillAmt() {
+    this.totalBill = this.subTotal + this.vatTaxAmt - this.discAmt;
+  }
+
+
+
 }

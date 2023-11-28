@@ -1,8 +1,8 @@
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
 
         <thead>
-            <tr class="text-uppercase">
+            <tr class="text-uppercase thead-dark">
                 <th>products</th>
                 <th>price</th>
                 <th>quantity</th>
@@ -13,14 +13,14 @@
             <tbody>
 
                 <tr *ngFor="let obj of objArray">
-                    <td>{{obj.name}}</td>
+                    <td> <span class="btn btn-link text-white bg-danger " (click)="deleteItem(obj.id)">X</span>
+                        {{obj.name}}</td>
                     <td class="text-right">{{obj.price | currency:"INR"}}</td>
                     <td>{{obj.quant}}</td>
                     <td class="text-right">{{obj.total| currency:"INR"}} </td>
                 </tr>
             </tbody>
         </ng-container>
-
     </table>
 </div>
 

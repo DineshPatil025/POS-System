@@ -4,8 +4,8 @@ export interface Ipos {
     category: string;
     description: string;
     image: string;
-    quant?:number;
     id:string;
+    quant?:number;
     total?:number;
     
 
