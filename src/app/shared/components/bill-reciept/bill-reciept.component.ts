@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
 import { PosService } from '../../services/pos.service';
 import { Ipos } from '../../models/pos';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MaxLengthValidator } from '@angular/forms';
 
 
@@ -23,7 +23,7 @@ export class BillRecieptComponent implements OnInit {
   billDate: Date = new Date()
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private _dialogRef: MatDialogRef<BillRecieptComponent>) { }
 
   ngOnInit(): void {
     this.objArr = this.data.arr;
@@ -40,6 +40,11 @@ export class BillRecieptComponent implements OnInit {
     window.print();
     
   }
+
+  close(){
+    this._dialogRef.close();
+  }
+ 
 
 
 
