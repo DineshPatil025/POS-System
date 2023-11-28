@@ -13,11 +13,27 @@
             <tbody>
 
                 <tr *ngFor="let obj of objArray">
-                    <td> <span class="btn btn-link text-white bg-danger " (click)="deleteItem(obj.id)">X</span>
+                    <td>
+                        
+                        <button mat-icon-button color="accent"  (click)="deleteItem(obj.id)">
+                            <mat-icon >cancel</mat-icon>
+                        </button>
                         {{obj.name}}</td>
-                    <td class="text-right">{{obj.price | currency:"INR"}}</td>
-                    <td>{{obj.quant}}</td>
-                    <td class="text-right">{{obj.total| currency:"INR"}} </td>
+                    <td class="text-right pt-4">{{obj.price | currency:"INR"}}</td>
+                    <td>
+                        <button mat-icon-button color="accent" (click)="onAddRemQuant(obj.id,'remove')"  >
+                            <mat-icon >remove_circle</mat-icon>
+                        </button>
+                       
+                        {{obj.quant}} 
+                        <button mat-icon-button color="primary" (click)="onAddRemQuant(obj.id ,'add')">
+                            <mat-icon >add_circle</mat-icon>
+                        </button>
+                        
+                    </td>
+                    <td class="text-right h-100 pt-4">
+                        
+                        {{obj.total| currency:"INR"}} </td>
                 </tr>
             </tbody>
         </ng-container>
@@ -26,7 +42,6 @@
 
 <ng-template #noData>
     <tr>
-
-        <td class="alert text-center alert-info text-uppercase"   colspan="4">No Product Added Yet !!!!!</td>
+        <td class="alert text-center alert-info text-uppercase" colspan="4">No Product Added Yet !!!!!</td>
     </tr>
 </ng-template>

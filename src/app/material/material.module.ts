@@ -4,6 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+
 
 
 let matArr = [
@@ -11,6 +15,8 @@ let matArr = [
   MatCardModule,
   MatDialogModule,
   MatSnackBarModule,
+  MatIconModule,
+  MatTooltipModule
 ]
 
 @NgModule({

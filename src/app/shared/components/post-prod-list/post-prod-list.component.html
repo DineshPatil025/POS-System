@@ -2,12 +2,31 @@
     <div class="col-md-12  ">
         <h3 class="text-center text-capitalize mb-1 text-dark bg-warning">click on below proeducts to add to bill</h3>
     </div>
-    <div class="col-md-4" *ngFor="let prod of prodArray" (click)="onProdClick(prod)">
-        <div class="card">
-
+    <!-- <div class="col-md-4" *ngFor="let prod of prodArray" (click)="onProdClick(prod)">
+        <div class="card" #tooltip="matTooltip" 
+        matTooltip="the product details are"
+        [matTooltipPosition]="'above'">
             <div class="card-body bg-dark text-white text-center text-uppercase prodItem">
                 {{prod.name}}
             </div>
         </div>
+    </div> -->
+
+    <div class="col-md-4" *ngFor="let prod of prodArray" (click)="onProdClick(prod)">
+        <div class="card " appProdTooTip [prodtoolTipTemplate]="toolTipTemplate">
+            <div class="card-body bg-dark text-white text-center text-uppercase prodItem">
+                {{prod.name}}
+            </div>
+        </div>
+        <ng-template #toolTipTemplate>
+
+
+            <p class="text-capitalize"> <strong>{{prod.name}}</strong> ; price : <strong>
+                    {{prod.price| currency:"INR"}}
+                </strong> Details:{{prod.description}} </p>
+
+
+        </ng-template>
     </div>
+
 </div>

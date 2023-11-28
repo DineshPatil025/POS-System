@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Ipos } from '../../models/pos';
 import { PosService } from '../../services/pos.service';
 
@@ -9,7 +9,7 @@ import { PosService } from '../../services/pos.service';
 })
 export class PostProdListComponent implements OnInit {
 
-
+  @Input('matTooltip') message!: string
   private _posService = inject(PosService)
 
 

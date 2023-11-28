@@ -19,7 +19,7 @@ export class PosService {
       name: "computer",
       price: "1000",
       category: "computers",
-      description: "",
+      description: "comes under electronics goods and digital equipment",
       image: "computer.jpg",
       id: "1"
 

@@ -1,6 +1,42 @@
 .prodItem {
     cursor: pointer;
-    & :hover{
-        background-color: lightblue;
-    }
+
+   
+}
+
+.prodToolTip:before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #f1f1f1 transparent;
+
+}
+
+.prodToolTip.show{
+    visibility: visible;
+    opacity: 0.7;
+
+}
+.prodToolTip{
+    position: relative;
+    display: inline-block;
+    visibility: visible;
+    width: 100%;
+    background-color: rgba(244, 244, 244,0.7);
+    color: rgb(15, 7, 7);
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    // z-index: 1;
+    top: 90%;
+    
+}
+
+.prodToolTip:hover .tooltipText{
+    visibility: visible;
 }

@@ -26,7 +26,7 @@ export class PosTableComponent implements OnInit {
   cancelBill() {
     this._posService.billSubjectAObs$.subscribe(res => {
       this.objArray = res;
-      // this._posService.getObjArra(this.objArray);
+
     });
 
   }
@@ -52,12 +52,36 @@ export class PosTableComponent implements OnInit {
 
   deleteItem(id: string) {
 
-    let deleteIndex = this.objArray.findIndex(ele => ele.id === id);
-    // this.objArray = this.objArray.splice(deleteIndex, 1);
-    this.objArray = this.objArray.filter(ele => ele.id !== id)
-    console.log(this.objArray);
-    this._posService.getBillObjArra(this.objArray)
-  }
+    let confDelete = confirm("Do You Want remove item from list ?")
+    if (confDelete) {
+      this.objArray = this.objArray.filter(ele => ele.id !== id)
+      this._posService.getBillObjArra(this.objArray)
+    }
 
+
+  }
+  onAddRemQuant(id: string, status: string) {
+    if (status === "add") {
+      console.log("add button clicked");
+      let getIndex = this.objArray.findIndex(ele => ele.id === id)
+      // this.objArray[getIndex].quant!++;
+      this._posService.getProdObj(this.objArray[getIndex])
+
+
+    } else if (status === "remove") {
+      console.log("remove button clicked");
+      let getIndex = this.objArray.findIndex(ele => ele.id === id)
+
+      if (this.objArray[getIndex].quant! === 1) {
+        this.deleteItem(id)
+      } else {
+        this.objArray[getIndex].quant = this.objArray[getIndex].quant! - 2;
+        this._posService.getProdObj(this.objArray[getIndex])
+      }
+
+
+    }
+
+  }
 
 }

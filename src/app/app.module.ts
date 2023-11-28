@@ -10,6 +10,7 @@ import { PostProdListComponent } from './shared/components/post-prod-list/post-p
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { BillRecieptComponent } from './shared/components/bill-reciept/bill-reciept.component';
+import { ProdTooTipDirective } from './shared/directives/prod-too-tip.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { BillRecieptComponent } from './shared/components/bill-reciept/bill-reci
     PostBillComponent,
     PostProdListComponent,
     BillRecieptComponent,
+    ProdTooTipDirective,
    
   ],
   imports: [

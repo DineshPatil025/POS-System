@@ -1,6 +1,6 @@
 <table class="table table-bordered">
     <tbody>
-        <tr>
+        <!-- <tr>
             <td>
                 <h3 class="mb-0 p-1">SubTotal</h3>
             </td>
@@ -14,52 +14,50 @@
                 </div>
 
             </td>
-        </tr>
+        </tr> -->
         <tr>
+            <th> SubTotal</th>
             <td>
-                <h3 class="mb-0 p-1">VAT Tax</h3>
+                No Of Items <strong>{{noOfItem}}</strong>
             </td>
-            <td>
-                <div class="row">
-
-                    <div class="col-md-12 d-flex justify-content-between">
-                        <input #vatTxaxPerc type="number" [min]="0" name="vatTax" id="vatTax" placeholder="Vat Tax"
-                            (change)="getVatPerc()" (keyup)="getVatPerc()" [disabled]="!subTotal" [(ngModel)]="vatPerc">
-                        <h3 class="subtotal">{{vatTaxAmt | currency:"INR"}}</h3>
-                    </div>
-                </div>
-
+            <td class="text-right">
+                {{subTotal | currency:"INR"}}
             </td>
         </tr>
+        
         <tr>
+            <th>
+                VAT Tax
+            </th>
             <td>
-                <h3 class="mb-0 p-1">Discount</h3>
+                <input #vatTxaxPerc type="number" [min]="0" name="vatTax" id="vatTax" placeholder="Vat Tax"
+                    (change)="getVatPerc()" (keyup)="getVatPerc()" [disabled]="!subTotal" [(ngModel)]="vatPerc">
             </td>
+            <td class="text-right">
+                {{vatTaxAmt | currency:"INR"}}
+            </td>
+        </tr>
+       
+
+        <tr>
+            <th>
+                Discount
+            </th>
             <td>
-                <div class="row">
-
-                    <div class="col-md-12 d-flex justify-content-between">
-                        <input #discount type="number" [min]="0" name="discount" id="discount"
-                            placeholder="Enter discount percent" [(ngModel)]="discPerc" (change)="getDiscPerc()"
-                            (keyup)="getDiscPerc()" [disabled]="!subTotal">
-                        <h3 class="subtotal">{{discAmt | currency:"INR"}}</h3>
-                    </div>
-                </div>
-
+                <input #discount type="number" [min]="0" name="discount" id="discount"
+                    placeholder="Enter discount percent" [(ngModel)]="discPerc" (change)="getDiscPerc()"
+                    (keyup)="getDiscPerc()" [disabled]="!subTotal">
+            </td>
+            <td class="text-right">
+                {{discAmt | currency:"INR"}}
             </td>
         </tr>
         <tr>
-            <td>
-                <h3 class="mb-0 p-1">Total</h3>
-            </td>
-            <td>
-                <!-- <div class="row "> -->
-
-                <!-- <div class="col-md-12 d-flex justify-content-between "> -->
-                <h3 class="subtotal text-right">{{totalBill | currency:"INR"}}</h3>
-                <!-- </div> -->
-                <!-- </div> -->
-
+            <th>
+                Total
+            </th>
+            <td colspan="2" class="text-right">
+               <strong> {{totalBill | currency:"INR"}}</strong>
             </td>
         </tr>
     </tbody>
@@ -69,5 +67,6 @@
     <button mat-raised-button color="accent" class="text-uppercase bill-button" (click)="onBillCancel()">cancel bill
     </button>
 
-    <button mat-raised-button color="primary" class="text-uppercase bill-button" (click)="onProcessBill()" [disabled]="!subTotal">process bill</button>
+    <button mat-raised-button color="primary" class="text-uppercase bill-button" (click)="onProcessBill()"
+        [disabled]="!subTotal">process bill</button>
 </div>
