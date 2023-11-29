@@ -15,18 +15,25 @@
                 <tr *ngFor="let obj of objArray">
                     <td>
                         
-                        <button mat-icon-button color="accent"  (click)="deleteItem(obj.id)">
+                        <button mat-icon-button color="accent"  (click)="deleteItem(obj.id)"
+                        #tooltip="matTooltip" matTooltip="Remove Item" [matTooltipPosition]="'left'"
+                        
+                        >
                             <mat-icon >cancel</mat-icon>
                         </button>
                         {{obj.name}}</td>
                     <td class="text-right pt-4">{{obj.price | currency:"INR"}}</td>
                     <td>
-                        <button mat-icon-button color="accent" (click)="onAddRemQuant(obj.id,'remove')"  >
+                        <button mat-icon-button color="accent" (click)="onAddRemQuant(obj.id,'remove')" 
+                        #tooltip="matTooltip" matTooltip="Deacrease Quantity" [matTooltipPosition]="'left'"
+                        >
                             <mat-icon >remove_circle</mat-icon>
                         </button>
                        
                         {{obj.quant}} 
-                        <button mat-icon-button color="primary" (click)="onAddRemQuant(obj.id ,'add')">
+                        <button mat-icon-button color="primary" (click)="onAddRemQuant(obj.id ,'add')"
+                        #tooltip="matTooltip" matTooltip="Increase Item" [matTooltipPosition]="'right'"
+                        >
                             <mat-icon >add_circle</mat-icon>
                         </button>
                         

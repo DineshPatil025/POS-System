@@ -22,7 +22,6 @@ export class ProdTooTipDirective {
 
   @HostListener('mouseover')
   onMouseOver() {
-    console.log("mouse in");
     
     this.createToolTip()
 
@@ -30,7 +29,6 @@ export class ProdTooTipDirective {
 
   @HostListener('mouseout')
   onMouseOut() {
-    console.log("mouse out");
 
     const toolTip = this._eleRef.nativeElement.querySelector('.prodToolTip')
     this._renderer.removeChild(this._eleRef.nativeElement, toolTip)

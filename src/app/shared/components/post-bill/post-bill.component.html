@@ -24,7 +24,7 @@
                 {{subTotal | currency:"INR"}}
             </td>
         </tr>
-        
+
         <tr>
             <th>
                 VAT Tax
@@ -37,7 +37,7 @@
                 {{vatTaxAmt | currency:"INR"}}
             </td>
         </tr>
-       
+
 
         <tr>
             <th>
@@ -57,16 +57,19 @@
                 Total
             </th>
             <td colspan="2" class="text-right">
-               <strong> {{totalBill | currency:"INR"}}</strong>
+                <strong> {{totalBill | currency:"INR"}}</strong>
             </td>
         </tr>
     </tbody>
 </table>
 
 <div class="d-flex justify-content-between">
-    <button mat-raised-button color="accent" class="text-uppercase bill-button" (click)="onBillCancel()">cancel bill
+    <button mat-raised-button color="accent" class="text-uppercase bill-button" (click)="onBillCancel()"
+        matTooltip="Clears All bill" [matTooltipPosition]="'below'">cancel bill
     </button>
 
     <button mat-raised-button color="primary" class="text-uppercase bill-button" (click)="onProcessBill()"
-        [disabled]="!subTotal">process bill</button>
+        [disabled]="!subTotal"
+        #tooltip="matTooltip" matTooltip="Generate Reciept" [matTooltipPosition]="'below'"
+        >process bill</button>
 </div>
