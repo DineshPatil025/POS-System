@@ -112,6 +112,6 @@ export class PostBillComponent implements OnInit {
   }
 
   onProcessBill() {
-    this.dialog.open(BillRecieptComponent, {width:"500px", height:"70vh", data: { arr: this.objArr, subtototat: this.subTotal, vatAmt: this.vatTaxAmt, discAmt: this.discAmt, subTotalAmt:this.subTotal, totAmt: this.totalBill,totQuant: this.noOfItem } })
+    this.dialog.open(BillRecieptComponent, { width: "500px", data: { arr: this.objArr, subtototat: this.subTotal, vatAmt: this.vatTaxAmt, discAmt: this.discAmt, subTotalAmt: this.subTotal, totAmt: this.totalBill, totQuant: this.noOfItem } })
   }
 }
